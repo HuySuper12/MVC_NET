@@ -1,0 +1,55 @@
+﻿@model AuthenticationModel
+
+@{
+    var fail = TempData["Fail"] as string;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<h1>ĐĂNG NHẬP</h1>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post" asp-controller="Authentication" asp-action="LogIn">
+                <h4>Điền thông tin để đăng nhập.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" asp-for="SignIn.Email" value=""/>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" asp-for="SignIn.Password" value="" />
+                </div>
+
+                @if (fail != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @fail
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </div>
+            </form>
+            <form method="post" asp-controller="Authentication" asp-action="Google">
+                <button type="submit" class="fab fa-google btn btn-danger"> Đăng nhập với Google</button>
+            </form>
+
+            <div class="g_id_signin" data-type="standard"></div>
+
+            <div class="form-group">
+                <p>
+                    <a id="forgot-password" asp-page="/ForgotPassword">Bạn quyên mật khẩu?</a>
+                </p>
+                <p>
+                    <a asp-controller="Authentication" asp-action="IndexRegister">Chưa có tài khoản, đăng ký mới</a>
+                </p>
+            </div>
+        </section>
+    </div>
+</div>

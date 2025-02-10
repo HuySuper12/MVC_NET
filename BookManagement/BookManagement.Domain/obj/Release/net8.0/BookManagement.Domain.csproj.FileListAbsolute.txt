@@ -1,0 +1,14 @@
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\bin\Release\net8.0\BookManagement.Domain.deps.json
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\bin\Release\net8.0\BookManagement.Domain.runtimeconfig.json
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\bin\Release\net8.0\BookManagement.Domain.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\bin\Release\net8.0\BookManagement.Domain.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.csproj.AssemblyReference.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.AssemblyInfoInputs.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.AssemblyInfo.cs
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.csproj.CoreCompileInputs.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\refint\BookManagement.Domain.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\BookManagement.Domain.genruntimeconfig.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Domain\obj\Release\net8.0\ref\BookManagement.Domain.dll

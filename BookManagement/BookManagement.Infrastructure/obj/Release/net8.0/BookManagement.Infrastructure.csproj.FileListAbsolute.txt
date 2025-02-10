@@ -1,0 +1,15 @@
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\bin\Release\net8.0\BookManagement.Infrastructure.deps.json
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\bin\Release\net8.0\BookManagement.Infrastructure.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\bin\Release\net8.0\BookManagement.Infrastructure.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\bin\Release\net8.0\BookManagement.Domain.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\bin\Release\net8.0\BookManagement.Domain.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookManagement.Infrastructure.csproj.AssemblyReference.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookManagement.Infrastructure.AssemblyInfoInputs.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookManagement.Infrastructure.AssemblyInfo.cs
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookManagement.Infrastructure.csproj.CoreCompileInputs.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookMana.A332F634.Up2Date
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookManagement.Infrastructure.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\refint\BookManagement.Infrastructure.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\BookManagement.Infrastructure.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Infrastructure\obj\Release\net8.0\ref\BookManagement.Infrastructure.dll

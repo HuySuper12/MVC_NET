@@ -1,0 +1,17 @@
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\bin\Release\net8.0\BookManagement.Application.deps.json
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\bin\Release\net8.0\BookManagement.Application.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\bin\Release\net8.0\BookManagement.Application.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\bin\Release\net8.0\BookManagement.Domain.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\bin\Release\net8.0\BookManagement.Infrastructure.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\bin\Release\net8.0\BookManagement.Infrastructure.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\bin\Release\net8.0\BookManagement.Domain.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookManagement.Application.csproj.AssemblyReference.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookManagement.Application.AssemblyInfoInputs.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookManagement.Application.AssemblyInfo.cs
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookManagement.Application.csproj.CoreCompileInputs.cache
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookMana.768CEB90.Up2Date
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookManagement.Application.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\refint\BookManagement.Application.dll
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\BookManagement.Application.pdb
+D:\.NET_WEB\Razor_BookManagement\BookManagement\BookManagement.Application\obj\Release\net8.0\ref\BookManagement.Application.dll

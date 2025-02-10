@@ -1,0 +1,259 @@
+﻿@model BookManagementModel
+@{
+    var bookList = Model.Books;
+    var success = TempData["Success"] as string;
+}
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@* Script load data len modal *@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).on("click", ".viewBookBtn", function () {
+        var bookId = $(this).data("id");
+
+        $.ajax({
+            url: '@Url.Action("BookDetail", "Book")',
+            type: "GET",
+            data: { id: bookId },
+            success: function (data) {
+                if (!data || data.success === false) {
+                    alert("Lỗi: " + (data.message || "Không có dữ liệu"));
+                    return;
+                }
+
+                $("#info").val("Update");
+                $("#bookId").val(data.id).prop("readonly", true);
+                $("#bookTitle").val(data.title);
+                $("#author").val(data.author);
+                $("#publicationDate").val(formatDateForDateInput(data.publishedDate));
+                $("#bookPrice").val(data.price);
+                $("#bookDescription").val(data.description);
+                $("#bookQuantity").val(data.quantity);
+
+                // Load danh sách thể loại
+                $.ajax({
+                    url: '@Url.Action("BookCategory", "Book")',
+                    type: "GET",
+                    dataType: "json",
+                    success: function (categories) {
+                        let $categorySelect = $("#bookCategory").empty();
+                        $.each(categories, function (index, category) {
+                            let selected = category.bookCategoryId === data.categoryId ? "selected" : "";
+                            $categorySelect.append(`<option value="${category.bookCategoryId}" ${selected}>${category.bookGenreType}</option>`);
+                        });
+                    },
+                    error: function () {
+                        console.error("Lỗi khi tải danh sách thể loại.");
+                    }
+                });
+
+                $("#addBookModal").modal("show");
+                document.getElementById("addBookModalLabel").innerText = "Update Book Detail";
+            },
+            error: function () {
+                alert("Lỗi khi tải dữ liệu!");
+            }
+        });
+    });
+    $(document).on("click", ".addBookBtn", function () {
+
+        $("#info").val("Add");
+        $("#bookId").val("");
+        $("#bookTitle").val("");
+        $("#author").val("");
+        $("#publicationDate").val("");
+        $("#bookPrice").val("");
+        $("#bookDescription").val("");
+        $("#bookQuantity").val("");
+
+        // Gọi API lấy danh sách thể loại
+        $.ajax({
+            url: '/Book/BookCategory',
+            type: 'GET',
+            dataType: 'json',
+            success: function (categories) {
+                let $categorySelect = $("#bookCategory");
+                $categorySelect.empty(); // Xóa danh sách cũ
+                $.each(categories, function (index, category) {
+                    let selected = category.bookCategoryId
+                    $categorySelect.append(`<option value="${category.bookCategoryId}">${category.bookGenreType}</option>`);
+                });
+            },
+            error: function () {
+                console.error("Lỗi khi tải danh sách thể loại.");
+            }
+        });
+
+        // Hiển thị modal
+        $("#addBookModal").modal("show");
+        document.getElementById("addBookModalLabel").innerText = "Add New Book";
+        $("#bookId").removeAttr("readonly");
+
+    });
+
+    function formatDateForDateInput(dateString) {
+        let date = new Date(dateString);
+        return date.toISOString().split("T")[0]; // Format YYYY-MM-DD
+    }
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- SweetAlert CSS (style) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+
+<!-- SweetAlert JS (script) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var isSuccess = "@TempData["Success"]"; 
+        if (isSuccess) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Thành công!',
+                text: isSuccess,
+                confirmButtonText: 'Đóng'
+            });
+        }
+    });
+</script>
+
+<div class="container mt-2">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+    <!-- Thanh tìm kiếm và nút thêm sách -->
+    <div class="d-flex justify-content-between mb-3">
+        <form method="post" asp-controller="Book" asp-action="SearchTitle">
+            <div class="d-flex justify-content-between">
+                <input type="text" class="form-control w-90" id="searchInput" placeholder="Tìm kiếm sách..." name="search">
+                <button type="submit" class="btn btn-success">Find</button>
+            </div>
+        </form>
+
+        <button class="btn btn-primary addBookBtn" data-bs-toggle="modal" data-bs-target="#addBookModal">Thêm Sách</button>
+    </div>
+
+    @* Thong bao *@
+    @if (success != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @success
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Bảng danh sách sách -->
+    <table class="table table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Book Name</th>
+                <th>Publication Date</th>
+                <th>Quantity</th>
+                <th>Price (VNĐ)</th>
+                <th>Author</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody id="bookTableBody">
+            @foreach (var item in bookList)
+            {
+                <tr>
+                    <td>@item.BookId</td>
+                    <td>@item.BookName</td>
+                    <td>@item.PublicationDate.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>@item.Author</td>
+                    <td class="d-flex gap-2">
+                        <a class="btn btn-warning btn-sm viewBookBtn" data-id="@item.BookId">View</a>
+                        <a class="btn btn-danger btn-sm" asp-controller="Book" asp-action="DeleteBook" asp-route-id="@item.BookId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <nav class="container mt-1 mb-5">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled"><a class="page-link" href="#">Trước</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Modal thêm sách -->
+<div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBookModalLabel">Add New Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-action="AddOrUpdateBook" asp-controller="Book" class="p-4 rounded shadow bg-white">
+                    <h4 class="text-center mb-4 text-primary">📚 Quản Lý Sách</h4>
+
+                    <input type="hidden" class="form-control" id="info" name="title" readonly required>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">📌 Mã sách</label>
+                        <input type="text" class="form-control" id="bookId" asp-for="Book.BookId" required placeholder="Nhập mã sách">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">📖 Tên sách</label>
+                        <input type="text" class="form-control" id="bookTitle" asp-for="Book.BookName" required placeholder="Nhập tên sách">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">✍️ Tác giả</label>
+                        <input type="text" class="form-control" id="author" asp-for="Book.Author" required placeholder="Nhập tên tác giả">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">📅 Ngày xuất bản</label>
+                        <input type="date" class="form-control" id="publicationDate" asp-for="Book.PublicationDate" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">💰 Giá (VNĐ)</label>
+                            <input type="text" class="form-control" id="bookPrice" asp-for="Book.Price" required placeholder="Nhập giá sách">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">📦 Số lượng</label>
+                            <input type="number" class="form-control" id="bookQuantity" asp-for="Book.Quantity" required placeholder="Nhập số lượng">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">📝 Mô tả sách</label>
+                        <textarea class="form-control" rows="4" id="bookDescription" asp-for="Book.Description" required placeholder="Nhập mô tả sách"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">📚 Thể loại sách</label>
+                        <select class="form-control" id="bookCategory" asp-for="Book.BookCategoryId" required>
+                            <option value="" disabled selected>Chọn thể loại...</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2">💾 Lưu thông tin</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
